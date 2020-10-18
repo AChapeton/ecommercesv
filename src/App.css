@@ -3,3 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+.home,
+.reports,
+.products {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  margin-left: 250px;
+}

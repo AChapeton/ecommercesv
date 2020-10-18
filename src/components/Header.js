@@ -18,9 +18,12 @@ const Header = () => {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={handleSidebar} />
           </Link>
+          <Link to="/new_product" className="btn btn-success rounded">
+            Nuevo producto
+          </Link>
         </div>
-        <nav class={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className="nav-menu-items">
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className="nav-menu-items" onClick={handleSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
                 <AiIcons.AiOutlineClose />

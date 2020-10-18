@@ -5,6 +5,9 @@ import Login from './components/Login';
 import Home from './pages/Home';
 import Layout from './components/Layout';
 import Header from './components/Header';
+import NewProducts from './components/NewProducts';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
@@ -15,9 +18,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/new_product" component={NewProducts} />
           </Switch>
         </Router>
       </Layout>
+      <ToastContainer />
     </>
   );
 }

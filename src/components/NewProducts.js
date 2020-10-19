@@ -9,6 +9,7 @@ const Products = () => {
   }, []);
 
   const [products, SetProducts] = useState([]);
+  const [currentId, setCurrentId] = useState('');
 
   const getProducts = () => {
     db.collection('products').onSnapshot((querySnapshot) => {
@@ -21,16 +22,27 @@ const Products = () => {
   };
 
   const newProduct = async (productObject) => {
-    db.collection('products')
-      .doc()
-      .set(productObject);
-    toast('Producto agregado', {
-      type: 'success',
-    });
-  };
-
-  const editProduct = async (id) => {
-    console.log('deleted');
+    try {
+      if (currentId === '') {
+        db.collection('products')
+          .doc()
+          .set(productObject);
+        toast('Producto agregado', {
+          type: 'success',
+        });
+      } else {
+        await db
+          .collection('products')
+          .doc(currentId)
+          .update(productObject);
+        toast('Producto actualizado', {
+          type: 'info',
+        });
+        setCurrentId('');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const deleteProduct = async (id) => {
@@ -39,7 +51,9 @@ const Products = () => {
         .collection('products')
         .doc(id)
         .delete();
-      console.log('deleted');
+      toast('Producto eliminado', {
+        type: 'error',
+      });
     }
   };
 
@@ -47,7 +61,7 @@ const Products = () => {
     <div className="produtcs">
       <div className="container p-4">
         <div className="row">
-          <ProductForm newProduct={newProduct} />
+          <ProductForm {...{ newProduct, currentId, products }} />
           <table className="table">
             <thead>
               <tr>
@@ -65,7 +79,10 @@ const Products = () => {
                   <td>{prod.category}</td>
                   <td>{prod.description}</td>
                   <td>
-                    <button className="btn btn-primary rounded">
+                    <button
+                      className="btn btn-primary rounded"
+                      onClick={() => setCurrentId(prod.id)}
+                    >
                       <i className="material-icons">create</i>
                     </button>
                   </td>

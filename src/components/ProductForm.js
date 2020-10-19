@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase';
 
 const ProductForm = (props) => {
   const initialStateValues = {
@@ -13,14 +13,30 @@ const ProductForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(product);
     props.newProduct(product);
+    setProduct({ ...initialStateValues });
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
   };
+
+  const getProductId = async (id) => {
+    const doc = await db
+      .collection('products')
+      .doc(id)
+      .get();
+    setProduct({ ...doc.data() });
+  };
+
+  useEffect(() => {
+    if (props.currentId === '') {
+      setProduct({ ...initialStateValues });
+    } else {
+      getProductId(props.currentId);
+    }
+  }, [props.currentId]);
 
   return (
     <form className="card card-body" onSubmit={handleSubmit}>
@@ -65,7 +81,9 @@ const ProductForm = (props) => {
           value={product.description}
         />
       </div>
-      <button className="btn btn-primary btn-block rounded">Guardar</button>
+      <button className="btn btn-primary btn-block rounded">
+        {props.currentId === '' ? 'Guardar' : 'Actualizar'}
+      </button>
     </form>
   );
 };

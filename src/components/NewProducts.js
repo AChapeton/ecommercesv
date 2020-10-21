@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductForm from './ProductForm';
-import { db } from '../firebase';
+import { db } from '../services/firebase';
 import { toast } from 'react-toastify';
 
 const Products = () => {

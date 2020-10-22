@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { AuthContext } from '../context/auth';
 import { Link } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import './css/Navbar.css';

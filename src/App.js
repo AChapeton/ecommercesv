@@ -14,26 +14,45 @@ import Header from './components/Header';
 import NewProducts from './components/NewProducts';
 //Permite a todos los componentes accesar al state global
 import { AuthContextProvider } from './context/auth';
+import GuardRoute from './components/GuardRoute';
+import Root from './components/Root';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
-      <Layout>
-        <Router>
-          <Header />
-          <AuthContextProvider>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/new_product" component={NewProducts} />
-              <Redirect from="/" to="/dashboard" />
-            </Switch>
-          </AuthContextProvider>
-        </Router>
-      </Layout>
+      <AuthContextProvider>
+        <Layout>
+          <Router>
+            <Header />
+            <Root>
+              <Switch>
+                {/* <GuardRoute type="public" exact path="/" component={Home} /> */}
+                <GuardRoute
+                  type="private"
+                  exact
+                  path="/dashboard"
+                  component={Dashboard}
+                />
+                <GuardRoute
+                  type="public"
+                  exact
+                  path="/login"
+                  component={Login}
+                />
+                <GuardRoute
+                  type="private"
+                  exact
+                  path="/new_product"
+                  component={NewProducts}
+                />
+                <Redirect from="/" to="/dashboard" />
+              </Switch>
+            </Root>
+          </Router>
+        </Layout>
+      </AuthContextProvider>
       <ToastContainer />
     </>
   );

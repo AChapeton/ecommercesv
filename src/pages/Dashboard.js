@@ -4,7 +4,7 @@ import { AuthContext } from '../context/auth';
 class Dashboard extends React.Component {
   render() {
     return (
-      <div>
+      <div className="home">
         Welcome! <br />
         {this.context.user && this.context.user.email}
       </div>

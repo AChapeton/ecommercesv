@@ -18,7 +18,7 @@ const uiConfig = {
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
-  signInSuccessUrl: '/',
+  signInSuccessUrl: '/dashboard',
 };
 
 const fb = firebase.initializeApp(firebaseConfig);

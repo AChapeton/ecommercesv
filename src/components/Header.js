@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { AuthContext } from '../context/auth';
+import GuardButton from './GuardButton';
 import { Link } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import './css/Navbar.css';
@@ -20,13 +20,14 @@ const Header = () => {
             <FaIcons.FaBars onClick={handleSidebar} />
           </Link>
           <div>
-            <Link to="/new_product" className="btn btn-success rounded mr-2">
+            <GuardButton />
+            {/* <Link to="/new_product" className="btn btn-success rounded mr-2">
               Nuevo producto
             </Link>
 
             <Link to="/login" className="btn btn-success rounded">
               Inicial sesión
-            </Link>
+            </Link> */}
           </div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

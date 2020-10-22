@@ -12,35 +12,35 @@ export const Sidebar = [
     cName: 'nav-text',
   },
   {
-    title: 'Reports',
-    path: '/reports',
-    icon: <AiIcons.AiFillHome />,
+    title: 'Cart',
+    path: '/cart',
+    icon: <AiIcons.AiOutlineShoppingCart />,
     cName: 'nav-text',
   },
   {
-    title: 'Products',
+    title: 'Productos',
     path: '/products',
-    icon: <AiIcons.AiFillHome />,
+    icon: <AiIcons.AiOutlineShop />,
     cName: 'nav-text',
   },
-  {
-    title: 'Home',
-    path: '/',
-    icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text',
-  },
-  {
-    title: 'Home',
-    path: '/',
-    icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text',
-  },
-  {
-    title: 'Home',
-    path: '/',
-    icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text',
-  },
+  // {
+  //   title: 'Home',
+  //   path: '/',
+  //   icon: <AiIcons.AiFillHome />,
+  //   cName: 'nav-text',
+  // },
+  // {
+  //   title: 'Home',
+  //   path: '/',
+  //   icon: <AiIcons.AiFillHome />,
+  //   cName: 'nav-text',
+  // },
+  // {
+  //   title: 'Home',
+  //   path: '/',
+  //   icon: <AiIcons.AiFillHome />,
+  //   cName: 'nav-text',
+  // },
 ];
 
 export default Sidebar;

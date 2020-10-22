@@ -19,9 +19,15 @@ const Header = () => {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={handleSidebar} />
           </Link>
-          <Link to="/new_product" className="btn btn-success rounded">
-            Nuevo producto
-          </Link>
+          <div>
+            <Link to="/new_product" className="btn btn-success rounded mr-2">
+              Nuevo producto
+            </Link>
+
+            <Link to="/login" className="btn btn-success rounded">
+              Inicial sesión
+            </Link>
+          </div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className="nav-menu-items" onClick={handleSidebar}>
